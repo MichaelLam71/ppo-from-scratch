@@ -265,6 +265,17 @@ for iteration in range(num_iterations):
             torch.save(critic, "/Users/michael/Desktop/Summer Project/NN/critic.pth")
 
 
+window = 20
+smoothed = np.convolve(reward_history, np.ones(window)/window, mode='valid')
+plt.figure(figsize=(10, 5))
+plt.plot(smoothed)
+plt.xlabel("Episode")
+plt.ylabel("Reward")
+plt.title("PPO on LunarLander-v3 Continuous")
+plt.savefig("results/training_curve.png")
+plt.show()
+
+
 
 
 

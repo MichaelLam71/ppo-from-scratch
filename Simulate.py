@@ -60,6 +60,6 @@ while not done:
     frames.append(env.render())
     done = terminated or truncated
 
-imageio.mimsave("landing.gif", frames, fps=30)
+imageio.mimsave("landing.gif", frames, fps=30, loop = 0)
 
 

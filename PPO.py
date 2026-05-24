@@ -3,7 +3,15 @@ import torch as torch
 import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 from torch.utils.data import TensorDataset, DataLoader
+
+
+SAVE_DIR = os.path.join(os.path.dirname(__file__), "NN")
+RESULTS_DIR = os.path.join(os.path.dirname(__file__), "results")
+
+os.makedirs(SAVE_DIR, exist_ok=True)
+os.makedirs(RESULTS_DIR, exist_ok=True)
 
 """
 PPO (Proximal Policy Optimization) for LunarLander-v3 continuous.
@@ -261,8 +269,8 @@ for iteration in range(num_iterations):
         #Save only the best model
         if avg > best_avg:
             best_avg = avg
-            torch.save(actor, "/Users/michael/Desktop/Summer Project/NN/actor.pth")
-            torch.save(critic, "/Users/michael/Desktop/Summer Project/NN/critic.pth")
+            torch.save(actor, f"{SAVE_DIR}/actor.pth")
+            torch.save(critic, f"{SAVE_DIR}/critic.pth")
 
 
 window = 20
@@ -272,7 +280,7 @@ plt.plot(smoothed)
 plt.xlabel("Episode")
 plt.ylabel("Reward")
 plt.title("PPO on LunarLander-v3 Continuous")
-plt.savefig("results/training_curve.png")
+plt.savefig(f"{RESULTS_DIR}/training_curve.png")
 plt.show()
 
 

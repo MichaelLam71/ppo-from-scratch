@@ -46,7 +46,7 @@ python ppo.py
 To watch the trained agent:
 
 ```
-python evaluate.py
+python Simulate.py
 ```
 
 ## Files

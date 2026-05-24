@@ -40,7 +40,7 @@ Key implementation details:
 
 ```
 pip install gymnasium torch numpy matplotlib imageio
-python ppo.py
+python PPO.py
 ```
 
 To watch the trained agent:
@@ -53,4 +53,3 @@ python Simulate.py
 
 - `PPO.py` - training script with full PPO implementation
 - `Simulate.py` - loads trained model, runs episodes, records gif
-- `DQN.py` - Double DQN implementation (built first as a learning exercise)

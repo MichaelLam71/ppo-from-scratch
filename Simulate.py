@@ -5,6 +5,7 @@ import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
 import imageio
+import os
 
 
 class Actor(nn.Module):
@@ -46,7 +47,11 @@ class Critic(nn.Module):
         #Outputs a number. Represents the VALUE of a state (how good it is)
 
 
-actor = torch.load("/Users/michael/Desktop/Summer Project/NN/actor.pth", weights_only = False)
+
+SAVE_DIR = os.path.join(os.path.dirname(__file__), "NN")
+RESULTS_DIR = os.path.join(os.path.dirname(__file__), "results")
+
+actor = torch.load(os.path.join(SAVE_DIR, "actor.pth"), weights_only=False)
 
 
 frames = []
@@ -59,7 +64,7 @@ while not done:
     obs, reward, terminated, truncated, _ = env.step(action.numpy())
     frames.append(env.render())
     done = terminated or truncated
-
-imageio.mimsave("landing.gif", frames, fps=30, loop = 0)
+    
+imageio.mimsave(os.path.join(RESULTS_DIR, "landing.gif"), frames, fps=30, loop=0)
 
 
